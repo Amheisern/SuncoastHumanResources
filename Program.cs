@@ -67,13 +67,23 @@ namespace SuncoastHumanResources
             {
                 // Insert a blank line then prompt them and get their answer (force uppercase)
                 Console.WriteLine();
-                Console.WriteLine("What do you what to do? (A)dd an emploee or (Q)uit: ");
+                Console.WriteLine("What do you what to do? (A)dd an employee or (S)how all the employees or (F)ind an employee or (Q)uit: ");
                 var choice = Console.ReadLine().ToUpper();
 
                 if (choice == "Q")
                 {
                     // They said quit, so set our keepGoing to false
                     keepGoing = false;
+                }
+                else if (choice == "S")
+                {
+                    // Loop through each employee: Could replace with a LINQ function
+                    foreach (var employee in employees)
+                    {
+                        // And print details
+                        Console.WriteLine($"{employee.Name} is in department {employee.Department} and makes ${employee.Salary}");
+                    }
+
                 }
                 else
                 {
