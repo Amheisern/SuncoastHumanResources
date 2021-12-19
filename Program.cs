@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SuncoastHumanResources
 {
@@ -51,15 +53,43 @@ namespace SuncoastHumanResources
         // ^^^^^^^^^^^^^^^^^^^^Classes and Methods^^^^^^^^^^^^^^^^^
         static void Main(string[] args)
         {
-            var employee = new Employee();
+            // Our list of employees
+            var employees = new List<Employee>();
+
 
             DisplayGreeting();
 
-            employee.Name = PromptForString("What is your name? ");
-            employee.Department = PromptForInteger("What is your department number? ");
-            employee.Salary = PromptForInteger("What is your yearly salary (in dollars)? ");
+            // Should we keep showing the menu?
+            var keepGoing = true;
 
-            Console.WriteLine($"Hello, {employee.Name} you make {employee.MonthlySalary()} dollars per month.");
+            // While the user hasn't said QUIT yet
+            while (keepGoing)
+            {
+                // Insert a blank line then prompt them and get their answer (force uppercase)
+                Console.WriteLine();
+                Console.WriteLine("What do you what to do? (A)dd an emploee or (Q)uit: ");
+                var choice = Console.ReadLine().ToUpper();
+
+                if (choice == "Q")
+                {
+                    // They said quit, so set our keepGoing to false
+                    keepGoing = false;
+                }
+                else
+                {
+                    // Make a new employee object
+                    var employee = new Employee();
+
+                    // Prompt for values and save them in the employee's properties
+                    employee.Name = PromptForString("What is your name? ");
+                    employee.Department = PromptForInteger("What is your department number? ");
+                    employee.Salary = PromptForInteger("What is your yearly salary (in dollars)? ");
+                    // Add it to the list
+                    employees.Add(employee);
+                }
+                // end of the `while` statement
+
+            }
         }
     }
 }
