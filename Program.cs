@@ -78,21 +78,21 @@ namespace SuncoastHumanResources
                 else if (choice == "F")
                 {
                     // Ask for the name of an employee
-                    var name = PromptForString("What name are you looking for?");
+                    var name = PromptForString("What name are you looking for:");
 
                     // Make a new variable to store the found employee, initializing
                     // to null which will indicate no match found
                     //like starting from zero with indexes
-                    Employee foundEmployee = null;
-
+                    //Employee foundEmployee = null;
+                    Employee foundEmployee = employees.FirstOrDefault(employee => employee.Name == name);
                     // Go through all the employees
-                    foreach (var employee in employees)
-                    {
-                        if (employee.Name == name)
-                        {
-                            foundEmployee = employee;
-                        }
-                    }
+                    // foreach (var employee in employees)
+                    // {
+                    //     if (employee.Name == name)
+                    //     {
+                    //         foundEmployee = employee;
+                    //     }
+                    // }
 
                     // If the foundEmployee is still null, nothing was found
                     if (foundEmployee == null)
