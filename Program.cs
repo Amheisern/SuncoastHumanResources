@@ -75,6 +75,36 @@ namespace SuncoastHumanResources
                     // They said quit, so set our keepGoing to false
                     keepGoing = false;
                 }
+                else if (choice == "F")
+                {
+                    // Ask for the name of an employee
+                    var name = PromptForString("What name are you looking for?");
+
+                    // Make a new variable to store the found employee, initializing
+                    // to null which will indicate no match found
+                    //like starting from zero with indexes
+                    Employee foundEmployee = null;
+
+                    // Go through all the employees
+                    foreach (var employee in employees)
+                    {
+                        if (employee.Name == name)
+                        {
+                            foundEmployee = employee;
+                        }
+                    }
+
+                    // If the foundEmployee is still null, nothing was found
+                    if (foundEmployee == null)
+                    {
+                        Console.WriteLine("No match found for ");
+                    }
+                    else
+                    {
+                        // Otherwise print details of the found employee
+                        Console.WriteLine($"Found! {foundEmployee.Name} is in department {foundEmployee.Department} and makes ${foundEmployee.Salary}");
+                    }
+                }
                 else if (choice == "S")
                 {
                     // Loop through each employee: Could replace with a LINQ function
