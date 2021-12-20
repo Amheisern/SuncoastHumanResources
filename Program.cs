@@ -125,7 +125,7 @@ namespace SuncoastHumanResources
                     //search the database to see if they exist
                     //Employee foundEmployee = employees.FirstOrDefault(employee => employee.Name == name);
                     Employee foundEmployee = database.FindOneEmployee(name);
-                    //if we found an employee 
+                    //if we didn't find an employee 
                     if (foundEmployee == null)
                     {
                         //Show if no results have been found in search
@@ -145,13 +145,6 @@ namespace SuncoastHumanResources
                         }
 
                     }
-
-
-
-
-
-                    //otherwise 
-
                 }
                 else if (choice == "F")
                 {
@@ -195,7 +188,7 @@ namespace SuncoastHumanResources
                     }
 
                 }
-                else
+                else if (choice == "A")
                 {
                     // Make a new employee object
                     var employee = new Employee();
@@ -208,6 +201,11 @@ namespace SuncoastHumanResources
                     database.AddEmployee(employee);
                     // employees.Add(employee);
                 }
+                else
+                {
+                    Console.WriteLine("That isn't a vail selection");
+                }
+
                 // end of the `while` statement
 
             }
