@@ -102,7 +102,7 @@ namespace SuncoastHumanResources
             {
                 // Insert a blank line then prompt them and get their answer (force uppercase)
                 Console.WriteLine();
-                Console.WriteLine("What do you what to do? (A)dd an employee or (S)how all the employees or (F)ind an employee or (Q)uit: ");
+                Console.WriteLine("What do you what to do?\n(A)dd an employee or\n(S)how all the employees or\n(F)ind an employee or\n(Q)uit: ");
                 var choice = Console.ReadLine().ToUpper();
 
                 if (choice == "Q")
