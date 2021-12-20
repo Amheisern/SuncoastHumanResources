@@ -110,7 +110,7 @@ namespace SuncoastHumanResources
             {
                 // Insert a blank line then prompt them and get their answer (force uppercase)
                 Console.WriteLine();
-                Console.WriteLine("What do you what to do?\n(A)dd an employee\n(S)how all the employees\n(F)ind an employee\n(D)elete an employee(Q)uit: ");
+                Console.WriteLine("What do you what to do?\n(A)dd an employee\n(S)how all the employees\n(F)ind an employee\n(D)elete an employee\n(Q)uit: ");
                 var choice = Console.ReadLine().ToUpper();
 
                 if (choice == "Q")
@@ -126,18 +126,18 @@ namespace SuncoastHumanResources
                     //Employee foundEmployee = employees.FirstOrDefault(employee => employee.Name == name);
                     Employee foundEmployee = database.FindOneEmployee(name);
                     //if we found an employee 
-                    if (foundEmployee != null)
+                    if (foundEmployee == null)
+                    {
+                        //Show if no results have been found in search
+                        Console.WriteLine("No such employee!");
+                    }
+                    else
                     {
                         //display employee
                         Console.WriteLine($"Found! {foundEmployee.Name} is in department {foundEmployee.Department} and makes ${foundEmployee.Salary}");
                         //Ask to confirm
                         var confirm = PromptForString("Please confirm that this is the name that you want to delete. [Y/N]").ToUpper();
-                        if (confirm == "N")
-                        {
-                            //if they say (N)o do nother
-
-                        }
-                        else
+                        if (confirm == "Y")
                         {
                             //if confirmed (Y)es delete employee
                             database.RemoveEmployee(foundEmployee);
@@ -146,11 +146,8 @@ namespace SuncoastHumanResources
 
                     }
 
-                    else
-                    {
-                        //Show if no results have been found in search
-                        Console.WriteLine("No such employee!");
-                    }
+
+
 
 
                     //otherwise 
