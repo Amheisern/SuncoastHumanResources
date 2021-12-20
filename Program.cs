@@ -46,6 +46,14 @@ namespace SuncoastHumanResources
             Employee foundEmployee = employees.FirstOrDefault(employee => employee.Name == name);
             return foundEmployee;
         }
+        // method for removing a employee from the list
+        public void RemoveEmployee(Employee employee)
+        {
+            employees.Remove(employee);
+
+        }
+
+
     }
     class Program
     {
@@ -102,7 +110,7 @@ namespace SuncoastHumanResources
             {
                 // Insert a blank line then prompt them and get their answer (force uppercase)
                 Console.WriteLine();
-                Console.WriteLine("What do you what to do?\n(A)dd an employee or\n(S)how all the employees or\n(F)ind an employee or\n(Q)uit: ");
+                Console.WriteLine("What do you what to do?\n(A)dd an employee\n(S)how all the employees\n(F)ind an employee\n(D)elete an employee(Q)uit: ");
                 var choice = Console.ReadLine().ToUpper();
 
                 if (choice == "Q")
@@ -110,10 +118,48 @@ namespace SuncoastHumanResources
                     // They said quit, so set our keepGoing to false
                     keepGoing = false;
                 }
+                else if (choice == "D")
+                {
+                    //take input from user get employee name
+                    var name = PromptForString("What name are you looking for: ");
+                    //search the database to see if they exist
+                    //Employee foundEmployee = employees.FirstOrDefault(employee => employee.Name == name);
+                    Employee foundEmployee = database.FindOneEmployee(name);
+                    //if we found an employee 
+                    if (foundEmployee != null)
+                    {
+                        //display employee
+                        Console.WriteLine($"Found! {foundEmployee.Name} is in department {foundEmployee.Department} and makes ${foundEmployee.Salary}");
+                        //Ask to confirm
+                        var confirm = PromptForString("Please confirm that this is the name that you want to delete. [Y/N]").ToUpper();
+                        if (confirm == "N")
+                        {
+                            //if they say (N)o do nother
+
+                        }
+                        else
+                        {
+                            //if confirmed (Y)es delete employee
+                            database.RemoveEmployee(foundEmployee);
+                            //employees.Remove(foundEmployee);
+                        }
+
+                    }
+
+                    else
+                    {
+                        //Show if no results have been found in search
+                        Console.WriteLine("No such employee!");
+                    }
+
+
+                    //otherwise 
+
+                }
                 else if (choice == "F")
                 {
                     // Ask for the name of an employee
-                    var name = PromptForString("What name are you looking for:");
+                    var name = PromptForString("What name are you looking for: ");
 
                     // Make a new variable to store the found employee, initializing
                     // to null which will indicate no match found
