@@ -43,7 +43,7 @@ namespace SuncoastHumanResources
         public Employee FindOneEmployee(string name)
         {
             // to null which will indicate no match found
-            Employee foundEmployee = employees.FirstOrDefault(employee => employee.Name == name);
+            Employee foundEmployee = employees.FirstOrDefault(employee => employee.Name.ToUpper().Contains(name.ToUpper()));
             return foundEmployee;
         }
         // method for removing a employee from the list
