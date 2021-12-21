@@ -60,40 +60,64 @@ namespace SuncoastHumanResources
                 Console.WriteLine("What do you what to do?\n(A)dd an employee\n(S)how all the employees\n(F)ind an employee\n(D)elete an employee\n(U)pdate an employee\n(Q)uit database: ");
                 var choice = Console.ReadLine().ToUpper();
 
-                // switch (choice)
-                if (choice == "Q")
+                switch (choice)
                 {
-                    // They said quit, so set our keepGoing to false
-                    keepGoing = false;
-                }
-                else if (choice == "D")
-                {
-                    DeleteEmployee(database);
-                }
-                else if (choice == "F")
-                {
-                    // Ask for the name of an employee
-                    FindEmployee(database);
-                }
-                else if (choice == "S")
-                {
-                    ShowAllEmployees(database);
+                    case "Q":
+                        keepGoing = false;
+                        break;
+                    case "D":
+                        DeleteEmployee(database);
+                        break;
+                    case "F":
+                        FindEmployee(database);
+                        break;
+                    case "S":
+                        ShowAllEmployees(database);
+                        break;
+                    case "A":
+                        AddEmployee(database);
+                        break;
+                    case "U":
+                        UpdateEmployee(database);
+                        break;
+                    default:
+                        Console.WriteLine("That isn't a vail selection");
+                        break;
 
                 }
-                else if (choice == "A")
-                {
-                    AddEmployee(database);
-                }
-                else if (choice == "U")
-                {
-                    //ask for name 
-                    UpdateEmployee(database);
+                // // if (choice == "Q")
+                // // {
+                // //     // They said quit, so set our keepGoing to false
+                // //     keepGoing = false;
+                // // }
+                // // else if (choice == "D")
+                // // {
+                // //     DeleteEmployee(database);
+                // // }
+                // // else if (choice == "F")
+                // // {
+                // //     // Ask for the name of an employee
+                // //     FindEmployee(database);
+                // // }
+                // // else if (choice == "S")
+                // // {
+                // //     ShowAllEmployees(database);
 
-                }
-                else
-                {
-                    Console.WriteLine("That isn't a vail selection");
-                }
+                // // }
+                // // else if (choice == "A")
+                // // {
+                // //     AddEmployee(database);
+                // // }
+                // // else if (choice == "U")
+                // // {
+                // //     //ask for name 
+                // //     UpdateEmployee(database);
+
+                // }
+                // else
+                // {
+                //     Console.WriteLine("That isn't a vail selection");
+                // }
 
                 // end of the `while` statement
 
