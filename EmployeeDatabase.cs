@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using CsvHelper;
 
 namespace SuncoastHumanResources
 {
@@ -11,15 +14,31 @@ namespace SuncoastHumanResources
         // outside this class to have access to it. All access
         // to this information comes through the methods of the
         // class.
-        private List<Employee> employees = new List<Employee>();
+        private List<Employee> Employees { get; set; } = new List<Employee>();
         public void LoadEmployees()
         {
+            if (File.Exists(FileName))
+            {
+                var fileReader = new StreamReader(FileName);
 
+                var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+
+                // Replace our BLANK list of employees with the ones that are in the CSV file
+                Employees = csvReader.GetRecords<Employee>().ToList();
+
+                fileReader.Close();
+            }
         }
 
         public void SaveEmployees()
         {
+            var fileWriter = new StreamWriter("employees.csv");
 
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+            csvWriter.WriteRecords(Employees);
+
+            fileWriter.Close();
         }
         // Get a list of all the employees
         public List<Employee> GetAllEmployees()
