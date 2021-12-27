@@ -36,6 +36,9 @@ namespace SuncoastHumanResources
         static void Main(string[] args)
         {
             var database = new EmployeeDatabase();
+
+            database.LoadEmployees();
+
             DisplayGreeting();
             // Should we keep showing the menu?
             var keepGoing = true;
@@ -76,7 +79,7 @@ namespace SuncoastHumanResources
                         if (confirm == "Y")
                         {
                             //    - Delete them
-                            database.DeleteEmployee(foundEmployee);
+                            database.RemoveEmployee(foundEmployee);
                         }
                     }
                 }
@@ -166,6 +169,7 @@ namespace SuncoastHumanResources
                 }
                 // end of the `while` statement
             }
+            database.SaveEmployees();
         }
     }
 }

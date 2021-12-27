@@ -12,7 +12,15 @@ namespace SuncoastHumanResources
         // to this information comes through the methods of the
         // class.
         private List<Employee> employees = new List<Employee>();
+        public void LoadEmployees()
+        {
 
+        }
+
+        public void SaveEmployees()
+        {
+
+        }
         // Get a list of all the employees
         public List<Employee> GetAllEmployees()
         {
