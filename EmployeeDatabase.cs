@@ -17,9 +17,9 @@ namespace SuncoastHumanResources
         private List<Employee> Employees { get; set; } = new List<Employee>();
         public void LoadEmployees()
         {
-            if (File.Exists(FileName))
+            if (File.Exists("employees.csv"))
             {
-                var fileReader = new StreamReader(FileName);
+                var fileReader = new StreamReader("employees.csv");
 
                 var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
 
@@ -43,13 +43,13 @@ namespace SuncoastHumanResources
         // Get a list of all the employees
         public List<Employee> GetAllEmployees()
         {
-            return employees;
+            return Employees;
         }
 
         // Get a list of all the employees
         public void AddEmployee(Employee newEmployee)
         {
-            employees.Add(newEmployee);
+            Employees.Add(newEmployee);
         }
 
         // Given a name as a string, look through the list of
@@ -58,13 +58,13 @@ namespace SuncoastHumanResources
         public Employee FindOneEmployee(string name)
         {
             // to null which will indicate no match found
-            Employee foundEmployee = employees.FirstOrDefault(employee => employee.Name.ToUpper().Contains(name.ToUpper()));
+            Employee foundEmployee = Employees.FirstOrDefault(employee => employee.Name.ToUpper().Contains(name.ToUpper()));
             return foundEmployee;
         }
         // method for removing a employee from the list
         public void RemoveEmployee(Employee employee)
         {
-            employees.Remove(employee);
+            Employees.Remove(employee);
 
         }
 
