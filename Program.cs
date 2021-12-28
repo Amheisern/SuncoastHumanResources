@@ -167,9 +167,9 @@ namespace SuncoastHumanResources
                 {
                     Console.WriteLine("NOPE! ☠️");
                 }
+                database.SaveEmployees();
                 // end of the `while` statement
             }
-            database.SaveEmployees();
         }
     }
 }
